@@ -35,6 +35,9 @@ def process_question(user_question):
     else:
         return "I apologize, but I don't have information on that topic yet. Could you please ask other questions?"
 
+def clear_input():
+    st.session_state.user_question = ""
+    
 def main():
     st.title("Health Question Answering")
 
@@ -48,8 +51,7 @@ def main():
         st.write(answer)
 
     if clear:
-        st.session_state['user_question'] = ""
-        st.experimental_rerun()
+        clear_input()
 
 # Load data and embeddings
 df, embeddings = load_data_and_embeddings()
