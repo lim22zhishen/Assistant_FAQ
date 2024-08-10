@@ -41,9 +41,15 @@ def main():
     user_question = st.text_input("Ask your health question")
     submit = st.button("Submit")
 
+    clear = st.button("Clear")
+
     if submit and user_question:
         answer = process_question(user_question)
         st.write(answer)
+
+    if clear:
+        st.session_state['user_question'] = ""
+        st.experimental_rerun()
 
 # Load data and embeddings
 df, embeddings = load_data_and_embeddings()
