@@ -7,7 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 openai.api_key = st.secrets['keys']
 
 def load_data_and_embeddings():
-    df = pd.read_csv("/content/sample_data/qa_dataset_with_embeddings.csv")
+    df = pd.read_csv("qa_dataset_with_embeddings.csv")
     # Convert string representations of embeddings back into numpy arrays
     df['Question_Embedding'] = df['Question_Embedding'].apply(lambda x: np.fromstring(x[1:-1], sep=','))
     embeddings = np.array(df['Question_Embedding'].tolist())
